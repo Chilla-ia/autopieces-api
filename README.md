@@ -9,6 +9,10 @@ mvn -v
 brew install maven
 
 # To install on Windows :
+https://maven.apache.org/download.cgi
+> create environment variables :
+* MAVEN_HOME=C:\apache-maven-3.8.4\bin
+* PATH=...;%MAVEN_HOME%
 
 # To run 
 mvn clean install </br>
