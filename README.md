@@ -14,3 +14,9 @@ brew install maven
 mvn clean install </br>
 mvn spring-boot:run OU mvn spring-boot:run -Dspring-boot.run.profiles=dev
 
+# Check if Mysql is intall or install it
+mysql --version </br>
+Install on Mac </br>
+brew install mysql
+
+
