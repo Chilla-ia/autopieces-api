@@ -9,8 +9,18 @@ mvn -v
 brew install maven
 
 # To install on Windows :
+https://maven.apache.org/download.cgi
+> create environment variables :
+* MAVEN_HOME=C:\apache-maven-3.8.4\bin
+* PATH=...;%MAVEN_HOME%
 
 # To run 
 mvn clean install </br>
 mvn spring-boot:run OU mvn spring-boot:run -Dspring-boot.run.profiles=dev
+
+# Check if Mysql is intall or install it
+mysql --version </br>
+Install on Mac </br>
+brew install mysql
+
 
