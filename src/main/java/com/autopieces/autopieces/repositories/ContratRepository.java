@@ -10,7 +10,4 @@ import java.util.List;
 @Repository
 public interface ContratRepository extends CrudRepository<Contrat, Long> {
 
-    List<Contrat> findContratByIdContrat(final Long id);
-
-    List<Contrat> findAll();
 }
