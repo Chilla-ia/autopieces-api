@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `api_pataproute_db`;
+USE `api_pataproute_db`;
 -- MySQL dump 10.13  Distrib 8.0.28, for macos11 (x86_64)
 --
 -- Host: 127.0.0.1    Database: api_pataproute_db
@@ -21,13 +23,13 @@
 
 DROP TABLE IF EXISTS `article`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `article` (
   `article_id` int NOT NULL AUTO_INCREMENT,
   `article_name` varchar(100) NOT NULL,
   `article_price` decimal(10,0) NOT NULL,
   PRIMARY KEY (`article_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +48,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `clients`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `clients` (
   `clients_id` int NOT NULL AUTO_INCREMENT,
   `clients_name` varchar(100) NOT NULL,
@@ -54,7 +56,7 @@ CREATE TABLE `clients` (
   PRIMARY KEY (`clients_id`),
   KEY `fk_contrat` (`contrat_id`),
   CONSTRAINT `fk_contrat` FOREIGN KEY (`contrat_id`) REFERENCES `contrat` (`contrat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +75,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `commande`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `commande` (
   `commande_id` int NOT NULL AUTO_INCREMENT,
   `commande_date` datetime NOT NULL,
@@ -84,7 +86,7 @@ CREATE TABLE `commande` (
   KEY `fk_article` (`article_id`),
   CONSTRAINT `fk_article` FOREIGN KEY (`article_id`) REFERENCES `article` (`article_id`),
   CONSTRAINT `fk_clients` FOREIGN KEY (`clients_id`) REFERENCES `clients` (`clients_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,12 +104,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `contrat`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `contrat` (
   `contrat_id` int NOT NULL AUTO_INCREMENT,
   `contrat_marge` int NOT NULL,
   PRIMARY KEY (`contrat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
