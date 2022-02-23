@@ -11,6 +11,6 @@ brew install maven
 # To install on Windows :
 
 # To run 
-mvn clean install
+mvn clean install </br>
 mvn spring-boot:run OU mvn spring-boot:run -Dspring-boot.run.profiles=dev
 
