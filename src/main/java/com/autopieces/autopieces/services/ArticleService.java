@@ -1,6 +1,7 @@
 package com.autopieces.autopieces.services;
 
 import com.autopieces.autopieces.models.Article;
+import com.autopieces.autopieces.models.Clients;
 import lombok.Data;
 import com.autopieces.autopieces.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,13 @@ public class ArticleService {
 
     public List<Article> getArticleWithPriceGreaterThan(float price) {
         return _articleRepository.findByPriceGreaterThanEqual(price);
+    }
+
+    public Article addArticle(Article newArticle) {
+        return _articleRepository.save(newArticle);
+    }
+
+    public void deleteArticleById(final Long id){
+        _articleRepository.deleteById(id);
     }
 }

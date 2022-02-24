@@ -25,5 +25,12 @@ public class ClientsService {
         return _clientsRepository.findAll();
     }
 
+    public Clients addClient(Clients newClient) {
+        return _clientsRepository.save(newClient);
+    }
+
+    public void deleteClientById(final Long id) {
+        _clientsRepository.deleteById(id);
+    }
 
 }

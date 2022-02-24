@@ -31,19 +31,19 @@ public class Clients implements Serializable {
     @JoinColumn(name = "contrat_id")
     @ApiModelProperty("contrat")
     @ManyToOne
-    private Contrat contrat;
+    private Long idContrat;
 
     public Clients() {
     }
 
-    public Clients(String name, Contrat contrat) {
+    public Clients(String name, Long idContrat) {
         this.name = name;
-        this.contrat = contrat;
+        this.idContrat = idContrat;
     }
 
     @Override
     public String toString() {
-        return "Clients [id=" + idClients + ", name=" + name + ", contrat=" + contrat + "]";
+        return "Clients [id=" + idClients + ", name=" + name + ", contrat=" + idContrat + "]";
     }
 
     public Long getIdArticle() {
@@ -62,12 +62,12 @@ public class Clients implements Serializable {
         this.name = name;
     }
 
-    public Contrat getContrat() {
-        return contrat;
+    public Long getContrat() {
+        return idContrat;
     }
 
-    public void setContrat(Contrat contrat) {
-        this.contrat = contrat;
+    public void setContrat(Long idContrat) {
+        this.idContrat = idContrat;
     }
 
     public static long getSerialversionuid() {

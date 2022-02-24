@@ -5,11 +5,8 @@ import com.autopieces.autopieces.services.ClientsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.ApiParam;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
 
@@ -31,5 +28,16 @@ public class ClientsController {
     @GetMapping("/{id}")
     public Optional<Clients> getClientById(@ApiParam("Identifiant du client - Ne peut être vide ") @PathVariable Long id){
         return _clientsService.getClient(id);
+    }
+
+    @PostMapping("/new-client")
+    Clients newClient(@RequestBody Clients newClient) {
+        return _clientsService.addClient(newClient);
+    }
+
+    @ApiOperation(value = "Supprime un client via son id")
+    @DeleteMapping("/delete{id}")
+    public void deleteClientById(@ApiParam("Identifiant du client - Ne peut être vide ") @PathVariable Long id){
+        _clientsService.deleteClientById(id);
     }
 }

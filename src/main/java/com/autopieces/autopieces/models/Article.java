@@ -31,6 +31,10 @@ public class Article implements Serializable {
     @ApiModelProperty("price")
     private Float price;
 
+    @Column(name = "marge")
+    @ApiModelProperty("marge")
+    private Float marge;
+
     public Article() {
     }
 
@@ -66,6 +70,10 @@ public class Article implements Serializable {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public Float getPriceWithMarge() {
+        return price + (price * marge / 100);
     }
 
     public static long getSerialversionuid() {
