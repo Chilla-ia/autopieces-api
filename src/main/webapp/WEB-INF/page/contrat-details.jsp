@@ -5,15 +5,13 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Home</title>
+		<title>Contrat</title>
 		<%@include file="common/header.jsp"%>
 	</head>
 	
-	<body>		
-		<!-- <%@include file="commons/menu.jsp"%>  -->
+	<body>
 		
-		<h1>Home is working fine.</h1>
-		<h2>Connexion page</h2>
+		<h1>Details / Client HERE :</h1>
 		
 		<%@include file="common/footer.jsp"%> 
 	</body>
