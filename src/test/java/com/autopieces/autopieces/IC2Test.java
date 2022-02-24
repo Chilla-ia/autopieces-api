@@ -46,7 +46,7 @@ public class IC2Test
      * Method pour tester si le calcul de la marge est correct
      *  Marge correspond au bénéfice que fait l'entreprise sur l'article en fonction du user - ( prix article / 100 ) * marge
      */
-    @Test
+    /*@Test
     void testCalculMarge(){
     	long userId = 1;
     	long getIdContrat = clientsService.getClient(userId).get().getContrat();
@@ -61,14 +61,14 @@ public class IC2Test
     	float getCalculFromFrontend = (float) 668.28 *getMargeFromContrat /100 ;
 
     	assertEquals(getCalculFromFrontend, expectedCalcul,"Calcul de Marge non conforme !");
-    }
+    }*/
 
     /**
      * Test method for {}
      * Method pour tester si le calcul du prix de la commande est correct
      *  Le prix correspond a la somme du prix de l'article , marge , tva associé  - ( marge + prix article + tva )
      */
-    @Test
+    /*@Test
     void testCalculPrixTotal(){
     	long userId = 1;
     	long getIdContrat = clientsService.getClient(userId).get().getContrat();
@@ -83,6 +83,6 @@ public class IC2Test
     	float getTotalPriceCalculatedWithMarginFromFrontend = (float) 0 ;
 
     	assertEquals(getTotalPriceCalculatedWithMarginFromFrontend, expectedTotalPriceCalculatedWithMargin,"Calcul du prix total non conforme !");
-    }
+    }*/
 
 }
