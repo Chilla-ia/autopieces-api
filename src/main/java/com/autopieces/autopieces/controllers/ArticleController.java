@@ -1,11 +1,9 @@
 package com.autopieces.autopieces.controllers;
 
 import com.autopieces.autopieces.models.Article;
-import com.autopieces.autopieces.models.Clients;
 import com.autopieces.autopieces.services.ArticleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.ApiParam;
 
@@ -19,11 +17,14 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/article")
-@Api(value = "onlinestore", description = "Opération permettant de récupérer des informations sur les articles")
+@Api(value = "onlinestore")
 public class ArticleController extends HttpServlet {
 
-    @Autowired
-    private ArticleService _articleService;
+    private final ArticleService _articleService;
+
+    public ArticleController(ArticleService _articleService) {
+        this._articleService = _articleService;
+    }
 
     @ApiOperation(value = "Récupére une liste d'article")
     @GetMapping("/")

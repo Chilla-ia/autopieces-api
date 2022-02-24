@@ -7,6 +7,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Entity
@@ -26,6 +27,10 @@ public class Contrat implements Serializable {
     @Column(name = "contrat_marge")
     @ApiModelProperty("marge")
     private int marge;
+
+    @ApiModelProperty("clients")
+    @OneToMany(mappedBy = "contrat")
+    private List<Clients> clients;
 
     public Contrat() {
     }

@@ -4,7 +4,6 @@ import com.autopieces.autopieces.models.Clients;
 import com.autopieces.autopieces.services.ClientsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.ApiParam;
 
@@ -12,11 +11,14 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/clients")
-@Api(value = "onlinestore", description = "Opération permettant de récupérer des informations sur les clients")
+@Api(value = "onlinestore")
 public class ClientsController {
 
-    @Autowired
-    private ClientsService _clientsService;
+    private final ClientsService _clientsService;
+
+    public ClientsController(ClientsService _clientsService) {
+        this._clientsService = _clientsService;
+    }
 
     @ApiOperation(value = "Récupére une liste de client")
     @GetMapping("/")

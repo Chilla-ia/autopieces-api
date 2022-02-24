@@ -24,6 +24,7 @@ public class SwaggerConfig {
                 .build().apiInfo(getApiInfo());
     }
 
+
     private ApiInfo getApiInfo() {
         return new ApiInfo("API REST AUTOPIECES",
                 "Voici un microservice permettant l'accès aux données concernant les articles de pieces détachées automobiles, ainsi qu'aux différents comptes clients et aux contrats",

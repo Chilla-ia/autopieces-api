@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.data.annotation.CreatedDate;
 
 @Data
 @Entity
@@ -29,31 +30,29 @@ public class Commande implements Serializable {
 
     @Column(name = "commande_date")
     @ApiModelProperty("date")
+    @CreatedDate
     private Date orderDate;
 
     @Column(name = "client_id")
-    @JoinColumn(name = "client_id")
     @ApiModelProperty("client")
-    @ManyToOne
-    private Clients client;
+    private Long clientId;
 
-    @JsonManagedReference
     @ApiModelProperty("article")
-    @OneToMany(mappedBy = "commande")
-    private List<Article> articles;
+    @Column(name = "article_id")
+    private Long articleId;
 
     public Commande() {
     }
 
-    public Commande(Date orderDate, Clients client, List<Article> articles) {
+    public Commande(Date orderDate, Long clientId, Long articleId) {
         this.orderDate = orderDate;
-        this.client = client;
-        this.articles = articles;
+        this.clientId = clientId;
+        this.articleId = articleId;
     }
 
     @Override
     public String toString() {
-        return "Commande [id=" + idCommande + ", date=" + orderDate + ", clients=" + client + ", articles=" + articles + "]";
+        return "Commande [id=" + idCommande + ", date=" + orderDate + ", clients=" + clientId + ", articles=" + articleId + "]";
     }
 
     public Long getIdCommande() {
@@ -72,20 +71,20 @@ public class Commande implements Serializable {
         this.orderDate = orderDate;
     }
 
-    public Clients getClients() {
-        return client;
+    public Long getClients() {
+        return clientId;
     }
 
-    public void setClients(Clients client) {
-        this.client = client;
+    public void setClients(Long clientId) {
+        this.clientId = clientId;
     }
 
-    public List<Article> getArticles() {
-        return articles;
+    public Long getArticle() {
+        return articleId;
     }
 
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
+    public void setArticles(Long articleId) {
+        this.articleId = articleId;
     }
 
     public static long getSerialversionuid() {

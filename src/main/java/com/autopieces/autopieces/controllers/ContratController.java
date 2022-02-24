@@ -1,11 +1,9 @@
 package com.autopieces.autopieces.controllers;
 
-import com.autopieces.autopieces.models.Clients;
 import com.autopieces.autopieces.models.Contrat;
 import com.autopieces.autopieces.services.ContratService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,11 +14,14 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/contrat")
-@Api(value = "onlinestore", description = "Opération permettant de récupérer des informations sur les contrats")
+@Api(value = "onlinestore")
 public class ContratController {
 
-    @Autowired
-    private ContratService _contratService;
+    private final ContratService _contratService;
+
+    public ContratController(ContratService _contratService) {
+        this._contratService = _contratService;
+    }
 
     @ApiOperation(value = "Récupére une liste de contrat")
     @GetMapping("/")

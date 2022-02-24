@@ -1,5 +1,6 @@
 package com.autopieces.autopieces.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -7,6 +8,8 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -21,7 +24,7 @@ public class Article implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("article_id")
     @Column(name = "article_id")
-    private Long idArticle;
+    private int idArticle;
 
     @Column(name = "article_name")
     @ApiModelProperty("name")
@@ -31,9 +34,9 @@ public class Article implements Serializable {
     @ApiModelProperty("price")
     private Float price;
 
-    @Column(name = "marge")
-    @ApiModelProperty("marge")
-    private Float marge;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "articles", fetch = FetchType.EAGER)
+    private Set<Clients> clients = new HashSet<>();
 
     public Article() {
     }
@@ -48,11 +51,11 @@ public class Article implements Serializable {
         return "Article [id=" + idArticle + ", name=" + name + ", price=" + price + "]";
     }
 
-    public Long getIdArticle() {
+    public int getIdArticle() {
         return idArticle;
     }
 
-    public void setIdArticle(Long idArticle) {
+    public void setIdArticle(int idArticle) {
         this.idArticle = idArticle;
     }
 
@@ -70,10 +73,6 @@ public class Article implements Serializable {
 
     public void setPrice(Float price) {
         this.price = price;
-    }
-
-    public Float getPriceWithMarge() {
-        return price + (price * marge / 100);
     }
 
     public static long getSerialversionuid() {

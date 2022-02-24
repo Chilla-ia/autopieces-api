@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface CommandeRepository extends CrudRepository<Commande, Long> {
 
-    List<Commande> findCommandeByClient(Clients clients);
+    List<Commande> findCommandeByClientId(Long clientsId);
 
     List<Commande> findCommandeByOrderDateEquals(Date date);
 

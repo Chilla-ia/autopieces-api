@@ -4,7 +4,6 @@ import com.autopieces.autopieces.models.Clients;
 import com.autopieces.autopieces.models.Commande;
 import lombok.Data;
 import com.autopieces.autopieces.repositories.CommandeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +16,11 @@ import java.util.Date;
 @Component
 public class CommandeService {
 
-    @Autowired
-    private CommandeRepository _commandeRepository;
+    private final CommandeRepository _commandeRepository;
+
+    public CommandeService(CommandeRepository _commandeRepository) {
+        this._commandeRepository = _commandeRepository;
+    }
 
     public Optional<Commande> getCommande(final Long id) {
         return _commandeRepository.findById(id);
@@ -28,8 +30,8 @@ public class CommandeService {
         return _commandeRepository.findAll();
     }
 
-    public List<Commande> getCommandeByClient(Clients clients) {
-        return _commandeRepository.findCommandeByClient(clients);
+    public List<Commande> getCommandeByClientId(Long clientsId) {
+        return _commandeRepository.findCommandeByClientId(clientsId);
     }
 
     public List<Commande> getCommandeWhenOrderDateEqualsTo(Date date) {

@@ -1,5 +1,6 @@
 package com.autopieces.autopieces.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -7,6 +8,8 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -27,23 +30,27 @@ public class Clients implements Serializable {
     @ApiModelProperty("name")
     private String name;
 
-    @Column(name = "contrat_id")
-    @JoinColumn(name = "contrat_id")
-    @ApiModelProperty("contrat")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "commande",
+            joinColumns = @JoinColumn(name = "clients_id", referencedColumnName = "clients_id"),
+            inverseJoinColumns = @JoinColumn(name = "article_id", referencedColumnName = "article_id"))
+    private Set<Article> articles = new HashSet<>();
+
     @ManyToOne
-    private Long idContrat;
+    @JoinColumn(name = "contrat_id")
+    private Contrat contrat = new Contrat();
 
     public Clients() {
     }
 
-    public Clients(String name, Long idContrat) {
+    public Clients(String name) {
         this.name = name;
-        this.idContrat = idContrat;
     }
 
     @Override
     public String toString() {
-        return "Clients [id=" + idClients + ", name=" + name + ", contrat=" + idContrat + "]";
+        return "Clients [id=" + idClients + ", name=" + name + "]";
     }
 
     public Long getIdArticle() {
@@ -60,14 +67,6 @@ public class Clients implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Long getContrat() {
-        return idContrat;
-    }
-
-    public void setContrat(Long idContrat) {
-        this.idContrat = idContrat;
     }
 
     public static long getSerialversionuid() {

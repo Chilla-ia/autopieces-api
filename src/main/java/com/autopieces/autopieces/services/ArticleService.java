@@ -1,10 +1,8 @@
 package com.autopieces.autopieces.services;
 
 import com.autopieces.autopieces.models.Article;
-import com.autopieces.autopieces.models.Clients;
 import lombok.Data;
 import com.autopieces.autopieces.repositories.ArticleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +14,11 @@ import java.util.Optional;
 @Component
 public class ArticleService {
 
-    @Autowired
-    private ArticleRepository _articleRepository;
+    private final ArticleRepository _articleRepository;
+
+    public ArticleService(ArticleRepository _articleRepository) {
+        this._articleRepository = _articleRepository;
+    }
 
     public Optional<Article> getArticle(final Long id) {
         return _articleRepository.findById(id);
