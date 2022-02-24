@@ -13,13 +13,13 @@ public class IC1Test
 {
     private ArticleService _articleService;
 
-    double embrayage;
+    float embrayage;
     /**
      *  Initialise les valeurs avant chaque test
      */
     @BeforeEach
     void setup() throws Exception {
-        embrayage = 556.9;
+        embrayage = (float) 556.9;
     }
 
     /**
@@ -31,7 +31,6 @@ public class IC1Test
     void testCoherencePrice()
     {
         long id = 1;
-        if( _articleService.getArticle(id).get().getPrice() != embrayage )
-            fail("Le prix de l'article est erronée");
+        assertEquals(_articleService.getArticle(id).get().getPrice(), embrayage,"Le prix de l'article est erronée !");
     }
 }
