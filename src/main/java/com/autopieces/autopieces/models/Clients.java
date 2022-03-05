@@ -24,7 +24,7 @@ public class Clients implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("clients_id")
     @Column(name = "clients_id")
-    private Long idClients;
+    private long idClients;
 
     @Column(name = "clients_name")
     @ApiModelProperty("name")
@@ -53,11 +53,11 @@ public class Clients implements Serializable {
         return "Clients [id=" + idClients + ", name=" + name + "]";
     }
 
-    public Long getIdArticle() {
+    public long getIdClients() {
         return idClients;
     }
 
-    public void setIdArticle(Long idClients) {
+    public void setIdClients(long idClients) {
         this.idClients = idClients;
     }
 
@@ -73,4 +73,7 @@ public class Clients implements Serializable {
         return serialVersionUID;
     }
 
+    public long getIdContrat() {
+        return this.contrat.getIdContrat();
+    }
 }

@@ -22,7 +22,7 @@ public class Contrat implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("contrat_id")
     @Column(name = "contrat_id")
-    private Long idContrat;
+    private long idContrat;
 
     @Column(name = "contrat_marge")
     @ApiModelProperty("marge")
@@ -44,11 +44,11 @@ public class Contrat implements Serializable {
         return "Contrat [id=" + idContrat + ", marge=" + marge + "]";
     }
 
-    public Long getIdContrat() {
+    public long getIdContrat() {
         return idContrat;
     }
 
-    public void setIdArticle(Long idContrat) {
+    public void setIdArticle(long idContrat) {
         this.idContrat = idContrat;
     }
 
@@ -63,4 +63,5 @@ public class Contrat implements Serializable {
     public static long getSerialversionuid() {
         return serialVersionUID;
     }
+
 }

@@ -4,8 +4,6 @@ import com.autopieces.autopieces.models.Article;
 import com.autopieces.autopieces.services.ArticleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.ApiParam;
 
@@ -47,7 +45,7 @@ public class ArticleController extends HttpServlet {
 
     @ApiOperation(value = "Récupére un article via son id")
     @GetMapping("/{id}")
-    public Optional<Article> getArticleById(@ApiParam("Identifiant de l'article - Ne peut être vide ") @PathVariable Long id){
+    public Optional<Article> getArticleById(@ApiParam("Identifiant de l'article - Ne peut être vide ") @PathVariable int id){
         return _articleService.getArticle(id);
     }
 
@@ -64,7 +62,7 @@ public class ArticleController extends HttpServlet {
 
     @ApiOperation(value = "Supprime un article via son id")
     @DeleteMapping("/delete{id}")
-    public void deleteArticleById(@ApiParam("Identifiant de l'article - Ne peut être vide ") @PathVariable Long id){
+    public void deleteArticleById(@ApiParam("Identifiant de l'article - Ne peut être vide ") @PathVariable long id){
          _articleService.deleteArticleById(id);
     }
 }

@@ -30,7 +30,7 @@ public class IC1Test
     @Test
     void testCoherencePrice()
     {
-        long embrayageId = 1;
+        int embrayageId = 1;
         float expectedEmbrayagePrice = _articleService.getArticle(embrayageId).get().getPrice();
         assertEquals(expectedEmbrayagePrice, embrayage,"Le prix de l'article est erronée !");
     }

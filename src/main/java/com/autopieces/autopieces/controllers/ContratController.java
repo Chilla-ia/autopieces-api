@@ -31,7 +31,7 @@ public class ContratController {
 
     @ApiOperation(value = "Récupére un contrat via son id")
     @GetMapping("/{id}")
-    public Optional<Contrat> getContratById(@ApiParam("Identifiant du contrat - Ne peut être vide ") @PathVariable Long id){
+    public Optional<Contrat> getContratById(@ApiParam("Identifiant du contrat - Ne peut être vide ") @PathVariable long id){
         return _contratService.getContrat(id);
     }
 }

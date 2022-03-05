@@ -28,7 +28,7 @@ public class ClientsController {
 
     @ApiOperation(value = "Récupére un client via son id")
     @GetMapping("/{id}")
-    public Optional<Clients> getClientById(@ApiParam("Identifiant du client - Ne peut être vide ") @PathVariable Long id){
+    public Optional<Clients> getClientById(@ApiParam("Identifiant du client - Ne peut être vide ") @PathVariable long id){
         return _clientsService.getClient(id);
     }
 
@@ -39,7 +39,7 @@ public class ClientsController {
 
     @ApiOperation(value = "Supprime un client via son id")
     @DeleteMapping("/delete{id}")
-    public void deleteClientById(@ApiParam("Identifiant du client - Ne peut être vide ") @PathVariable Long id){
+    public void deleteClientById(@ApiParam("Identifiant du client - Ne peut être vide ") @PathVariable long id){
         _clientsService.deleteClientById(id);
     }
 }

@@ -20,7 +20,7 @@ public class ArticleService {
         this._articleRepository = _articleRepository;
     }
 
-    public Optional<Article> getArticle(final Long id) {
+    public Optional<Article> getArticle(final long id) {
         return _articleRepository.findById(id);
     }
 
@@ -36,7 +36,7 @@ public class ArticleService {
         return _articleRepository.save(newArticle);
     }
 
-    public void deleteArticleById(final Long id){
+    public void deleteArticleById(final long id){
         _articleRepository.deleteById(id);
     }
 }

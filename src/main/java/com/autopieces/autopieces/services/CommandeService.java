@@ -22,7 +22,7 @@ public class CommandeService {
         this._commandeRepository = _commandeRepository;
     }
 
-    public Optional<Commande> getCommande(final Long id) {
+    public Optional<Commande> getCommande(final long id) {
         return _commandeRepository.findById(id);
     }
 
@@ -30,7 +30,7 @@ public class CommandeService {
         return _commandeRepository.findAll();
     }
 
-    public List<Commande> getCommandeByClientId(Long clientsId) {
+    public List<Commande> getCommandeByClientId(long clientsId) {
         return _commandeRepository.findCommandeByClientId(clientsId);
     }
 

@@ -33,13 +33,13 @@ public class CommandeController {
 
     @ApiOperation(value = "Récupére une commande via son id")
     @GetMapping("/{id}")
-    public Optional<Commande> getCommandeById(@ApiParam("Identifiant de la commande - Ne peut être vide ") @PathVariable Long id){
+    public Optional<Commande> getCommandeById(@ApiParam("Identifiant de la commande - Ne peut être vide ") @PathVariable long id){
         return _commandeService.getCommande(id);
     }
 
     @ApiOperation(value = "Récupére une commande via un client ")
     @GetMapping("/{clientId}")
-    public List<Commande> getCommandeByClientId(@ApiParam("Information du client - Ne peut être vide ") @PathVariable Long clientId){
+    public List<Commande> getCommandeByClientId(@ApiParam("Information du client - Ne peut être vide ") @PathVariable long clientId){
         return _commandeService.getCommandeByClientId(clientId);
     }
 
