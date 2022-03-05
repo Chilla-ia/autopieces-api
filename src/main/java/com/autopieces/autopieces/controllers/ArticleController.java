@@ -4,14 +4,12 @@ import com.autopieces.autopieces.models.Article;
 import com.autopieces.autopieces.services.ArticleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.ApiParam;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,14 +24,26 @@ public class ArticleController extends HttpServlet {
         this._articleService = _articleService;
     }
 
-    @ApiOperation(value = "Récupére une liste d'article")
-    @GetMapping("/")
-    public Iterable<Article> getAllArticles(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException
-    {
-        this.getServletContext().getRequestDispatcher("WEB-INF/page/home.jsp").forward(req, resp);
+    @ModelAttribute
+    public Iterable<Article> articles(){
         return _articleService.getAllArticles();
     }
+
+    //@GetMapping("/articles")
+    /*@ModelAttribute
+    public String listArticles(ModelMap model)
+    {
+        Iterable<Article> listArticles = _articleService.getAllArticles();
+
+        model.addAttribute("listArticles", listArticles);
+
+        return "index";
+    }*/
+
+
+    @ApiOperation(value = "Récupére une liste d'article")
+    @GetMapping("/")
+    public Iterable<Article> getAllArticles() {return _articleService.getAllArticles();}
 
     @ApiOperation(value = "Récupére un article via son id")
     @GetMapping("/{id}")
