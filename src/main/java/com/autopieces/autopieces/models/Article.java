@@ -26,7 +26,7 @@ public class Article implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("article_id")
     @Column(name = "article_id")
-    private int idArticle;
+    private long idArticle;
 
     @Column(name = "article_name")
     @ApiModelProperty("name")
@@ -53,11 +53,11 @@ public class Article implements Serializable {
         return "Article [id=" + idArticle + ", name=" + name + ", price=" + price + "]";
     }
 
-    public int getIdArticle() {
+    public long getIdArticle() {
         return idArticle;
     }
 
-    public void setIdArticle(int idArticle) {
+    public void setIdArticle(long idArticle) {
         this.idArticle = idArticle;
     }
 

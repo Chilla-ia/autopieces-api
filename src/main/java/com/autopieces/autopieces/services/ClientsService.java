@@ -19,7 +19,7 @@ public class ClientsService {
         this._clientsRepository = _clientsRepository;
     }
 
-    public Optional<Clients> getClient(final Long id) {
+    public Optional<Clients> getClient(final long id) {
         return _clientsRepository.findById(id);
     }
 
@@ -31,7 +31,7 @@ public class ClientsService {
         return _clientsRepository.save(newClient);
     }
 
-    public void deleteClientById(final Long id) {
+    public void deleteClientById(final long id) {
         _clientsRepository.deleteById(id);
     }
 

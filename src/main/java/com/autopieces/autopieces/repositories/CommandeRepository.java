@@ -9,9 +9,9 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface CommandeRepository extends CrudRepository<Commande, Long> {
+public interface CommandeRepository extends CrudRepository<Commande, long> {
 
-    List<Commande> findCommandeByClientId(Long clientsId);
+    List<Commande> findCommandeByClientId(long clientsId);
 
     List<Commande> findCommandeByOrderDateEquals(Date date);
 

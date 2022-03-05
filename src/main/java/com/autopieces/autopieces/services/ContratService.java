@@ -19,7 +19,7 @@ public class ContratService {
         this._contratRepository = _contratRepository;
     }
 
-    public Optional<Contrat> getContrat(final Long id) {
+    public Optional<Contrat> getContrat(final long id) {
         return _contratRepository.findById(id);
     }
 

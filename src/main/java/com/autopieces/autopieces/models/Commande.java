@@ -26,7 +26,7 @@ public class Commande implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("commande_id")
     @Column(name = "commande_id")
-    private Long idCommande;
+    private long idCommande;
 
     @Column(name = "commande_date")
     @ApiModelProperty("date")
@@ -35,16 +35,16 @@ public class Commande implements Serializable {
 
     @Column(name = "client_id")
     @ApiModelProperty("client")
-    private Long clientId;
+    private long clientId;
 
     @ApiModelProperty("article")
     @Column(name = "article_id")
-    private Long articleId;
+    private long articleId;
 
     public Commande() {
     }
 
-    public Commande(Date orderDate, Long clientId, Long articleId) {
+    public Commande(Date orderDate, long clientId, long articleId) {
         this.orderDate = orderDate;
         this.clientId = clientId;
         this.articleId = articleId;
@@ -55,11 +55,11 @@ public class Commande implements Serializable {
         return "Commande [id=" + idCommande + ", date=" + orderDate + ", clients=" + clientId + ", articles=" + articleId + "]";
     }
 
-    public Long getIdCommande() {
+    public long getIdCommande() {
         return idCommande;
     }
 
-    public void setIdCommande(Long idCommande) {
+    public void setIdCommande(long idCommande) {
         this.idCommande = idCommande;
     }
 
@@ -71,19 +71,19 @@ public class Commande implements Serializable {
         this.orderDate = orderDate;
     }
 
-    public Long getClients() {
+    public long getClients() {
         return clientId;
     }
 
-    public void setClients(Long clientId) {
+    public void setClients(long clientId) {
         this.clientId = clientId;
     }
 
-    public Long getArticle() {
+    public long getArticle() {
         return articleId;
     }
 
-    public void setArticles(Long articleId) {
+    public void setArticles(long articleId) {
         this.articleId = articleId;
     }
 
