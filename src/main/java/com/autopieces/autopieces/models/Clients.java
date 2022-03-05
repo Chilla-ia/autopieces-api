@@ -73,4 +73,9 @@ public class Clients implements Serializable {
         return serialVersionUID;
     }
 
+	public long getIdContrat() {
+		// TODO Auto-generated method stub
+		return this.contrat.getIdContrat();
+	}
+
 }
