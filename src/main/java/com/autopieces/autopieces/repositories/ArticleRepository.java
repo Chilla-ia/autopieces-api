@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ArticleRepository extends CrudRepository<Article, long> {
+public interface ArticleRepository extends CrudRepository<Article, Long> {
 
     List<Article> findByPriceGreaterThanEqual(float price);
 
