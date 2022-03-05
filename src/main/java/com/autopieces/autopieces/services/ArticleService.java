@@ -24,7 +24,7 @@ public class ArticleService {
         return _articleRepository.findById(id);
     }
 
-    public Iterable<Article> getAllArticles() {
+    public Iterable<Article> getArticlesList() {
         return _articleRepository.findAll();
     }
 

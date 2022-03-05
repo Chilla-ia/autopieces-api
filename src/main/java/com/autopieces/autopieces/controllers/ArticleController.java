@@ -4,8 +4,8 @@ import com.autopieces.autopieces.models.Article;
 import com.autopieces.autopieces.services.ArticleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.ApiParam;
 
@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/article")
+@Controller
+@RequestMapping("/")
 @Api(value = "onlinestore")
 public class ArticleController extends HttpServlet {
 
@@ -24,26 +24,19 @@ public class ArticleController extends HttpServlet {
         this._articleService = _articleService;
     }
 
+    @GetMapping("/index")
     @ModelAttribute
-    public Iterable<Article> articles(){
-        return _articleService.getAllArticles();
-    }
-
-    //@GetMapping("/articles")
-    /*@ModelAttribute
-    public String listArticles(ModelMap model)
+    public String articlesList(Model model)
     {
-        Iterable<Article> listArticles = _articleService.getAllArticles();
-
-        model.addAttribute("listArticles", listArticles);
+        model.addAttribute("articles", _articleService.getArticlesList());
 
         return "index";
-    }*/
+    }
 
 
     @ApiOperation(value = "Récupére une liste d'article")
-    @GetMapping("/")
-    public Iterable<Article> getAllArticles() {return _articleService.getAllArticles();}
+    @GetMapping("/articles")
+    public Iterable<Article> getAllArticles() {return _articleService.getArticlesList();}
 
     @ApiOperation(value = "Récupére un article via son id")
     @GetMapping("/{id}")

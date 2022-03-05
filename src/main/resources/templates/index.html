@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
     <title>Product Catalog</title>
@@ -8,7 +8,7 @@
   <body>
 
     <div>
-      <h1>Product Test 3</h1>
+      <h1>Product Catalog</h1>
       <table>
         <thead>
           <tr>
@@ -19,7 +19,7 @@
         <tbody>
           <tr data-th-each ="article : ${articles}">
             <td data-th-text="${article.name}">Embrayage</td>
-            <td data-th-text="${article.price}">967</td>
+            <td data-th-text="${article.price} + ' €'">967</td>
           </tr>
         </tbody>
       </table>
