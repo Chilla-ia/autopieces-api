@@ -49,8 +49,8 @@ public class IC2Test
      */
     @Test
     void testCalculMarge(){
-    	int userId = 1;
-    	long getIdContrat = clientsService.getClient(userId).get().getContrat().getIdContrat();
+    	long userId = 1;
+    	long getIdContrat = clientsService.getClient(userId).get().getIdContrat();
     	int getMargeFromContrat = contratService.getContrat(getIdContrat).get().getMarge();
     	
     	int articleId = 1;
