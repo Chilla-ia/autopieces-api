@@ -49,15 +49,22 @@ public class ICXTest
 	static Stream<Arguments> chargerLesContrats() throws Throwable
 	{
 		return Stream.of(
-				Arguments.of(1,10),
-				Arguments.of(2,20),
-				Arguments.of(3,30)
+				Arguments.of(1,13,26.145),
+				Arguments.of(2,13,27.39),
+				Arguments.of(3,13,28.635),
+				Arguments.of(4,13,29.88),
+				Arguments.of(5,13,31.125)
 		);
 	}
 
 	@MethodSource("chargerLesContrats")
-	void testCalculPrixParContrat(long contratId, long prixAttendu){
+	void testCalculPrixParContrat(long contratId, long articleId, Float prixAttenduHT){
 		// TODO :
+		int margeContrat = contratService.getContrat(contratId).get().getMarge();
+		Float articlePrice = articleService.getArticle(articleId).get().getPrice();
+
+		Float calculatedPriceWithContrat = articlePrice + articlePrice * margeContrat / 100;
+		assertEquals(calculatedPriceWithContrat,prixAttenduHT,"Le prix attendu par rapport au contrat n'est pas bon !");
 	}
 
 }
