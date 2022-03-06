@@ -32,15 +32,14 @@ public class IC2Test
      */
     @Test
     void testCalculTVA(){
-    	//int articleId = 1;
-    	//float articlePriceHT = articleService.getArticle(articleId).get().getPrice();
-    	//float expectedCalcul = articlePriceHT + articlePriceHT *20 /100;
-    	//
-    	//// TODO :
-    	//float getCalculFromFrontend = (float) 668.28;
-		//
-    	//assertEquals(getCalculFromFrontend, expectedCalcul,"Calcul de TVA non conforme !");
-		assertEquals(1,1,"test");
+    	int articleId = 1;
+    	float articlePriceHT = articleService.getArticle(articleId).get().getPrice();
+    	float expectedCalcul = articlePriceHT + articlePriceHT *20 /100;
+
+    	// TODO :
+    	float getCalculFromFrontend = (float) 668.28;
+
+    	assertEquals(getCalculFromFrontend, expectedCalcul,"Calcul de TVA non conforme !");
 	}
 
     /**
@@ -50,20 +49,19 @@ public class IC2Test
      */
     @Test
     void testCalculMarge(){
-    	//long userId = 1;
-    	//long getIdContrat = clientsService.getClient(userId).get().getIdContrat();
-    	//int getMargeFromContrat = contratService.getContrat(getIdContrat).get().getMarge();
-    	//
-    	//int articleId = 1;
-    	//float articlePriceHT = articleService.getArticle(articleId).get().getPrice();
-    	//float articlePrice = articlePriceHT + articlePriceHT *20 /100;
-    	//float expectedCalcul = articlePrice *getMargeFromContrat /100;
-    	//
-    	//// TODO :
-    	//float getCalculFromFrontend = (float) 668.28 *getMargeFromContrat /100 ;
-		//
-    	//assertEquals(getCalculFromFrontend, expectedCalcul,"Calcul de Marge non conforme !");
-		assertEquals(1,1,"test");
+    	long userId = 1;
+    	long getIdContrat = clientsService.getClient(userId).get().getIdContrat();
+    	int getMargeFromContrat = contratService.getContrat(getIdContrat).get().getMarge();
+
+    	int articleId = 1;
+    	float articlePriceHT = articleService.getArticle(articleId).get().getPrice();
+    	float articlePrice = articlePriceHT + articlePriceHT *20 /100;
+    	float expectedCalcul = articlePrice *getMargeFromContrat /100;
+
+    	// TODO :
+    	float getCalculFromFrontend = (float) 668.28 *getMargeFromContrat /100 ;
+
+    	assertEquals(getCalculFromFrontend, expectedCalcul,"Calcul de Marge non conforme !");
 	}
 
     /**
@@ -73,19 +71,18 @@ public class IC2Test
      */
     @Test
     void testCalculPrixTotal(){
-    	//long userId = 1;
-    	//long getIdContrat = clientsService.getClient(userId).get().getIdContrat();
-    	//int getMargeFromContrat = contratService.getContrat(getIdContrat).get().getMarge();
-    	//
-    	//long articleId = 1;
-    	//float articlePriceHT = articleService.getArticle(articleId).get().getPrice();
-    	//float articlePrice = articlePriceHT + articlePriceHT *20 /100;
-    	//float expectedTotalPriceCalculatedWithMargin = articlePrice + articlePrice *getMargeFromContrat /100;
-    	//
-    	//// TODO :
-    	//float getTotalPriceCalculatedWithMarginFromFrontend = (float) 0 ;
-		//
-    	//assertEquals(getTotalPriceCalculatedWithMarginFromFrontend, expectedTotalPriceCalculatedWithMargin,"Calcul du prix total non conforme !");
-		assertEquals(1,1,"test");
+    	long userId = 1;
+    	long getIdContrat = clientsService.getClient(userId).get().getIdContrat();
+    	int getMargeFromContrat = contratService.getContrat(getIdContrat).get().getMarge();
+
+    	long articleId = 1;
+    	float articlePriceHT = articleService.getArticle(articleId).get().getPrice();
+    	float articlePrice = articlePriceHT + articlePriceHT *20 /100;
+    	float expectedTotalPriceCalculatedWithMargin = articlePrice + articlePrice *getMargeFromContrat /100;
+
+    	// TODO :
+    	float getTotalPriceCalculatedWithMarginFromFrontend = (float) 0 ;
+
+    	assertEquals(getTotalPriceCalculatedWithMarginFromFrontend, expectedTotalPriceCalculatedWithMargin,"Calcul du prix total non conforme !");
 	}
 }
