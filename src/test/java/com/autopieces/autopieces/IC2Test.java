@@ -3,12 +3,16 @@ package com.autopieces.autopieces;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.autopieces.autopieces.models.Contrat;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.autopieces.autopieces.services.ArticleService;
 import com.autopieces.autopieces.services.ClientsService;
 import com.autopieces.autopieces.services.ContratService;
+
+import java.io.IOException;
 
 /**
  * @author dreamTeam
@@ -31,15 +35,20 @@ public class IC2Test
      *  TVA correspond à 20% du prix de l'article - ( prix article / 100 ) * 20
      */
     @Test
-    void testCalculTVA(){
+    void testCalculTVA() {
     	int articleId = 1;
     	float articlePriceHT = articleService.getArticle(articleId).get().getPrice();
     	float expectedCalcul = articlePriceHT + articlePriceHT *20 /100;
 
-    	// TODO :
-    	float getCalculFromFrontend = (float) 668.28;
+    	float getCalculFromFrontend = (float) 556.9;
+		try {
+			Document articles = Jsoup.connect("http://localhost/article").get();
+			getCalculFromFrontend = Float.parseFloat(articles.id("EmbrayagePrice").toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-    	assertEquals(getCalculFromFrontend, expectedCalcul,"Calcul de TVA non conforme !");
+	assertEquals(getCalculFromFrontend, expectedCalcul,"Calcul de TVA non conforme !");
 	}
 
     /**
@@ -58,8 +67,13 @@ public class IC2Test
     	float articlePrice = articlePriceHT + articlePriceHT *20 /100;
     	float expectedCalcul = articlePrice *getMargeFromContrat /100;
 
-    	// TODO :
     	float getCalculFromFrontend = (float) 668.28 *getMargeFromContrat /100 ;
+		try {
+			Document articles = Jsoup.connect("http://localhost/contrat").get();
+			getCalculFromFrontend = Float.parseFloat(articles.id("MargeContrat").toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
     	assertEquals(getCalculFromFrontend, expectedCalcul,"Calcul de Marge non conforme !");
 	}
@@ -80,8 +94,13 @@ public class IC2Test
     	float articlePrice = articlePriceHT + articlePriceHT *20 /100;
     	float expectedTotalPriceCalculatedWithMargin = articlePrice + articlePrice *getMargeFromContrat /100;
 
-    	// TODO :
     	float getTotalPriceCalculatedWithMarginFromFrontend = (float) 0 ;
+		try {
+			Document articles = Jsoup.connect("http://localhost/total").get();
+			getTotalPriceCalculatedWithMarginFromFrontend = Float.parseFloat(articles.id("TotalPrice").toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
     	assertEquals(getTotalPriceCalculatedWithMarginFromFrontend, expectedTotalPriceCalculatedWithMargin,"Calcul du prix total non conforme !");
 	}
