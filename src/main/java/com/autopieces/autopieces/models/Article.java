@@ -8,10 +8,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Entity
@@ -35,10 +32,6 @@ public class Article implements Serializable {
     @Column(name = "article_price")
     @ApiModelProperty("price")
     private Float price;
-
-    /*@JsonIgnore
-    @ManyToMany(mappedBy = "article", fetch = FetchType.EAGER)
-    private Set<Clients> clients = new HashSet<>();*/
 
     @OneToMany(mappedBy="article")
     private List<Clients> clients;
