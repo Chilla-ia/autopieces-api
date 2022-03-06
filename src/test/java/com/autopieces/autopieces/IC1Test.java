@@ -5,12 +5,17 @@ import static org.junit.jupiter.api.Assertions.*;
 import com.autopieces.autopieces.services.ArticleService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  * @author dreamTeam
  */
+@SpringBootTest
 public class IC1Test
 {
+    @Autowired
     private ArticleService _articleService;
 
     float embrayage;
@@ -31,7 +36,7 @@ public class IC1Test
     void testCoherencePrice()
     {
         int embrayageId = 1;
-        float expectedEmbrayagePrice = _articleService.getArticle(embrayageId).get().getPrice();
+        float expectedEmbrayagePrice = this._articleService.getArticle(embrayageId).get().getPrice();
         assertEquals(expectedEmbrayagePrice, embrayage,"Le prix de l'article est erronée !");
     }
 }

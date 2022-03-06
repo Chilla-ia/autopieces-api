@@ -13,12 +13,18 @@ import org.junit.jupiter.params.provider.MethodSource;
 import com.autopieces.autopieces.services.ArticleService;
 import com.autopieces.autopieces.services.ClientsService;
 import com.autopieces.autopieces.services.ContratService;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
+@RunWith(Parameterized.class)
 public class ICXTest
 {
 	private ArticleService articleService;
 	private ClientsService clientsService;
 	private ContratService contratService;
+
+	@BeforeEach
+	void setup() throws Exception {}
 
 	static Stream<Arguments> chargerLesClients() throws Throwable 
     {
