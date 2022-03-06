@@ -28,10 +28,6 @@ public class ArticleService {
         return _articleRepository.findAll();
     }
 
-    public List<Article> getArticleWithPriceGreaterThan(float price) {
-        return _articleRepository.findByPriceGreaterThanEqual(price);
-    }
-
     public Article addArticle(Article newArticle) {
         return _articleRepository.save(newArticle);
     }

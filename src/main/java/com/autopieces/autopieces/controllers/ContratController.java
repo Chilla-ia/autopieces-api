@@ -24,7 +24,7 @@ public class ContratController {
     }
 
     @ApiOperation(value = "Récupére une liste de contrat")
-    @GetMapping("/")
+    @GetMapping("contrats")
     public Iterable<Contrat> getAllContrats(){
         return _contratService.getAllContrats();
     }
