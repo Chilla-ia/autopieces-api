@@ -21,7 +21,7 @@ public class ClientsController {
     }
 
     @ApiOperation(value = "Récupére une liste de client")
-    @GetMapping("/")
+    @GetMapping("clients")
     public Iterable<Clients> getAllClients(){
         return _clientsService.getAllClients();
     }
