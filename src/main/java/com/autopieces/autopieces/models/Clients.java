@@ -30,16 +30,20 @@ public class Clients implements Serializable {
     @ApiModelProperty("name")
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToOne
+    @JoinColumn(name = "article_id")
+    private Article article;
+
+   /* @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "commande",
             joinColumns = @JoinColumn(name = "clients_id", referencedColumnName = "clients_id"),
             inverseJoinColumns = @JoinColumn(name = "article_id", referencedColumnName = "article_id"))
-    private Set<Article> articles = new HashSet<>();
+    private Set<Article> articles = new HashSet<>();*/
 
     @ManyToOne
     @JoinColumn(name = "contrat_id")
-    private Contrat contrat = new Contrat();
+    private Contrat contrat;
 
     public Clients() {
     }
@@ -68,6 +72,10 @@ public class Clients implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    //TODO : Getter and Setter article
+    //TODO : Getter and Setter contrat
+
 
     public static long getSerialversionuid() {
         return serialVersionUID;

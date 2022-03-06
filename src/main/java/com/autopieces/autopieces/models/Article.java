@@ -36,9 +36,12 @@ public class Article implements Serializable {
     @ApiModelProperty("price")
     private Float price;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "articles", fetch = FetchType.EAGER)
-    private Set<Clients> clients = new HashSet<>();
+    /*@JsonIgnore
+    @ManyToMany(mappedBy = "article", fetch = FetchType.EAGER)
+    private Set<Clients> clients = new HashSet<>();*/
+
+    @OneToMany(mappedBy="article")
+    private List<Clients> clients;
 
     public Article() {
     }
@@ -76,6 +79,8 @@ public class Article implements Serializable {
     public void setPrice(Float price) {
         this.price = price;
     }
+
+    //TODO : Getter and Setter Clients
 
     public static long getSerialversionuid() {
         return serialVersionUID;
